@@ -9,7 +9,10 @@ def main():
 
     while True:
         guess = get_guess()
-        if guess is None:
+
+        # if guess is None:
+        # I first uses None to compare, but it's better to use the pythonic way
+        if not guess:
             continue
         count += 1
 
@@ -17,8 +20,6 @@ def main():
             break
 
     print(f"You guessed it in {count} steps.")
-    pass
-
 
 def show_header():
     print("-------------------------------------------")
@@ -33,19 +34,28 @@ def show_header():
     pass
 
 def get_guess():
-    print("What number am I thinking of? ")
-    # use pythong built in method to read the console input here into a variable
-    val = input()
+    try:
+        # I first used a print and then assigned the input to a variable
+        # print("What number am I thinking of? ")
+        # val = input()
 
-    if not val.isnumeric():
+        # But I can get print the message directly in the input
+        text = input("What number am I thinking of? ")
+        number = int(text)
+
+        # It worked using the any typed val but I will use an exception
+        # if not val.isnumeric():
+        #     print("That's not a number!")
+        #     return None
+
+        if number < 1 or number > 100:
+            print(f"{number} is not between 1 and 100.")
+            return None
+
+        return int(number)
+    except:
         print("That's not a number!")
         return None
-
-    if int(val) < 1 or int(val) > 100:
-        print(f"{val} is not between 1 and 100.")
-        return None
-
-    return int(val)
 
 def evaluate_guess(guess, number):
     if guess == number:
