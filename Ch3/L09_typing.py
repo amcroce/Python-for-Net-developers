@@ -4,20 +4,20 @@ class Wizard:
     #     self.level = level
 
     def __init__(self):
-        self.name = "Gandalf"
-        self.level = 0
+        self.name : str = "Gandalf"
+        self.level : int = 0
 
     @classmethod
     def train_with_class_method(cls, baseLevel):
         return cls("Gandalf", baseLevel+1)
 
     @staticmethod
-    def train(baseLevel):
+    def train(baseLevel: int) -> "Wizard":
         w = Wizard()
         w.level += baseLevel
         return w
 
-
+## Types warning are basically an editor feature, not a runtime feature
 def main():
     gandalf = Wizard.train(10)
     gandalf.level += 1
