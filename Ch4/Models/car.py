@@ -15,5 +15,6 @@ class Car(abc.ABC):
     def refuel(self):
         pass
 
+    @property
     def is_electric(self) -> bool:
         return self.engine_type == "electric"
