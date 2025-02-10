@@ -4,7 +4,8 @@ from Models.car import Car
 def main():
     cars = create_cars()
     for car in cars:
-        print(f"Car: {car.model_name} price is: {car.base_price}")
+        car.drive()
+        car.refuel()
     pass
 
 def create_cars():
